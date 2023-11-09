@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+        <%- include('../commons/script.ejs') %>
+		<title>Result</title>
+	</head>
+	<body>
+        <%- include('../commons/navbar.ejs') %>
+
+		<div>
+			<div class="container-fluid my-4">
+				<a onclick="goBack()" class="btn btn-secondary">Back</a>
+			</div>
+			<div class="container d-flex justify-content-center">
+				<div class="w-50">
+					<h4 class="my-3">Result</h4>
+					<%- include('../commons/alerts.ejs') %>
+					<table class="table table-bordered my-4">
+						<tr>
+							<th>Roll No.</th>
+							<td><%= student.rollNo %></td>
+						</tr>
+						<tr>
+							<th>Name</th>
+							<td><%= student.name %></td>
+						</tr>
+						<tr>
+							<th>Date of birth</th>
+							<td><%= student.dob %></td>
+						</tr>
+						<tr>
+							<th>Score</th>
+							<td><%= student.score %></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

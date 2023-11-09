@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+        <%- include('../commons/script.ejs') %>
+		<title>Teacher Dashboard</title>
+	</head>
+	<body>
+        <%- include('../commons/navbar.ejs') %>
+
+		<div>
+			<div class="container mt-5">
+				<%- include('../commons/alerts.ejs') %>
+				<div>
+					<div class="d-flex justify-content-between">
+						<p>Total <%= students.length%> students</p>
+						<a href="/teacher/add-result"
+							><button class="btn btn-primary">Add Record</button></a
+						>
+					</div>
+					<div class="py-3">
+						<table class="table table-bordered">
+							<tr>
+								<th>Roll No.</th>
+								<th>Name</th>
+								<th>Date Of Birth</th>
+								<th>Score</th>
+								<th>Actions</th>
+							</tr>
+                            <% if(students.length>0){ %>
+                            <% students.map(student=>{%>
+							<tr>
+								<td><%= student.rollNo %></td>
+								<td><%= student.name %></td>
+								<td><%= student.dob %></td>
+								<td><%= student.score %></td>
+								<td class="d-flex">
+									<a href="/teacher/edit-result?rollNo=<%= student.rollNo%>"
+										><button class="btn btn-primary mx-2">Edit</button></a
+									>
+									
+                                    <form action="/teacher/delete-result" method="get" class="d-flex">
+                                        <input type="hidden" name="rollNo" value=<%= student.rollNo %>>
+                                        <button type="submit" class="btn btn-danger mx-2">
+                                            Delete
+                                        </button>
+                                    </form>
+								</td>
+							</tr>
+                            <% }) %>
+                            <% }else{%>
+                            <tr>
+                                <h2>No Students</h2>
+                            </tr>
+                            <% } %>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

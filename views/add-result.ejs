@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+        <%- include('../commons/script.ejs') %>
+		<title>Add Result</title>
+	</head>
+	<body>
+        <%- include('../commons/navbar.ejs') %>
+		<div>
+			<div class="container-fluid my-4">
+				<a onclick="goBack()" class="btn btn-secondary">Back</a>
+			</div>
+			<div class="container w-50">
+				<%- include('../commons/alerts.ejs') %>
+				<form action="/teacher/add-result" method="post">
+					<h4 class="my-3">Add New Result</h4>
+					<% if(locals.error || locals.errors){ %>
+						<div class="alert alert-danger">
+                            <% if(locals.errors){errors.map(error=>{ %>
+                                <span class="text-danger"><%= error.msg %></span><br>
+                            <% })}%>
+                            <% if(locals.error){ %>
+                                <span class="text-danger"><%= error %></span>
+                            <% }%>
+                        </div>
+                        <% } %>
+					<div class="form-group my-2">
+						<label for="rollNo">Roll No.</label>
+						<input
+							type="text"
+							id="rollNo"
+							name="rollNo"
+							class="form-control"
+						/>
+						
+					</div>
+					<div class="form-group my-2">
+						<label for="name">Name</label>
+						<input
+							type="text"
+							id="name"
+							name="name"
+							class="form-control"
+						/>
+						
+					</div>
+					<div class="form-group my-2">
+						<label for="dob">Date Of Birth</label>
+						<input
+							type="date"
+							id="dob"
+							name="dob"
+							class="form-control"
+						/>
+						
+					</div>
+					<div class="form-group my-2">
+						<label for="score">Score</label>
+						<input
+							type="text"
+							id="score"
+							name="score"
+							class="form-control"
+						/>
+					</div>
+					<div class="my-3">
+						<button class="btn btn-primary">Submit</button>&nbsp;
+						<button type="reset" class="btn btn-secondary">Clear</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

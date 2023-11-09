@@ -1,0 +1,25 @@
+<style>
+	body{
+		overflow-x: hidden !important;
+	}
+</style>
+<div class="header-div py-3 row">
+	<div class="col-3"></div>
+	<div class="col-6">
+		<h3 class="text-center display-5">Result Managament System</h3>
+	</div>
+
+	<div class="py-2 col-3 d-flex justify-content-end">
+		<div class="d-flex align-items-center" id="nav-user">
+			<span id="username" class="d-flex align-items-center mx-2">
+				<% if(locals.user){ %> 
+					<%= user.email.split("@")[0] %>
+				<% } %>
+			</span>
+			<% if(locals.user){ %> 
+			<a href="/auth/logout"><button class="btn btn-primary mx-2" style="height: fit-content">Logout</button></a>
+			<% } %>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,5 @@
+<div class="alerts">
+    <% if(locals.alerts && alerts.length>0){ alerts.map(alert =>{ %>
+            <div class="alert alert-<%= alert.type %>"><%= alert.msg %></div>
+        <% })} %>
+</div>
